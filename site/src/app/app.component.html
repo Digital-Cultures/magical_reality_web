@@ -1,0 +1,50 @@
+﻿<!-- nav -->
+<style>
+    .logo{
+        height: 24px;
+        /*float: right;*/
+        right:10px;
+        margin:8px;
+    /*background-color: pink;
+    border-color: pink;
+    border:5px solid;*/
+    /*margin:5px; */
+
+    }
+    .logo_holder{
+        position: absolute;
+        right:0px; 
+        height: 100%;
+        vertical-align: center;
+    }
+</style>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+        <div class ="logo_holder">
+            <img class="logo" src="assets/logos/ncl.png"/>
+        <img class="logo" src="assets/logos/white.png"/>
+        </div>
+        
+    </div>
+</nav>
+<h1 style="width:100%; text-align: center; margin-top: 3%">{{ title }}</h1>
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+<!-- main app container -->
+<!-- <div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <alert></alert>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="container">
+   <router-outlet></router-outlet>
+</div>

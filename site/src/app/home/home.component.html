@@ -1,0 +1,39 @@
+﻿<agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng" (mapClick)="mapClicked($event)">
+	<!-- <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="iconUrl""></agm-marker> -->
+	<agm-marker 
+	*ngFor="let m of markers; let i = index"
+	(markerClick)="clickedMarker(m, m.label, i)"
+	[latitude]="m.lat"
+	[longitude]="m.lng"
+	[label]="m.label"
+	[iconUrl]="m.iconUrl"
+	[markerDraggable]="m.draggable"
+	(dragEnd)="markerDragEnd(m, $event)">
+</agm-marker>
+</agm-map>
+<!-- <h1 style="width:100%; text-align: center;">Hi {{currentUser.firstName}}! </h1> -->
+
+<h2 style="width:100%; text-align: center;">This is your walk:{{walkNameService.getWalkName()}}</h2>
+<p style="width:100%; text-align: center;">Choose an image below and place it on the map</p>
+
+<drag-scroll class="demo-one"
+
+drag-scroll-y-disabled="true"
+scrollbar-hidden="false"
+(dsInitialized)="onDragScrollInitialized()"
+(indexChanged)="onIndexChanged($event)"
+(reachesLeftBound)="leftBoundStat($event)"
+(reachesRightBound)="rightBoundStat($event)"
+(snapAnimationFinished)="onSnapAnimationFinished()"
+#nav
+>
+<img drag-scroll-item *ngFor="let image of imagelist" [src]="'assets/' + image" (click)="clickItem(image)" />
+</drag-scroll>
+
+<br>
+<select style = "display: block; margin: 0 auto;" [(ngModel)]='selectedAction' >
+	<option  [value]="action" *ngFor="let action of actions; index as i">{{action}}</option>
+
+
+</select>
+  

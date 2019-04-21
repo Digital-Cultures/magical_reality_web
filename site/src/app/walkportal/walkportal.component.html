@@ -1,0 +1,16 @@
+	<h1 style="width:100%; text-align: center;">Hi {{currentUser.firstName}}!</h1>
+	<section style="width:100%; text-align: center;">
+		<section *ngIf="walks.length>0">
+			Choose a walk
+			<select  style="margin-right: 10px" [(ngModel)]='selectedWalk' >
+				<option  [value]="walk" *ngFor="let walk of walks; index as i">{{walk}}</option>
+
+			</select>
+			<button mat-raised-button color="primary" (click)="loadRoute()">see my walk</button>
+			<br>
+			or
+		</section>
+
+		<input style="margin-right: 10px; width:50%" value="give your new walk a name" (keyup)="onKey($event)">
+		<button mat-raised-button color="primary" (click)="addRouteToServer()">make a walk</button>
+	</section>
